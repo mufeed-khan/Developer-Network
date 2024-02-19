@@ -3,9 +3,8 @@ import { Link, Navigate } from 'react-router-dom';
 import { login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setAlert } from '../../actions/alert';
 
-const Login = ({ setAlert, login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -63,11 +62,11 @@ const Login = ({ setAlert, login, isAuthenticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  setAlert: PropTypes.func.isRequired,
+
   isAuthenticated: PropTypes.bool,
 };
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { setAlert, login })(Login);
+export default connect(mapStateToProps, { login })(Login);
